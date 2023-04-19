@@ -5,10 +5,12 @@ public class PlayerMovement : MonoBehaviour
     //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
     public float speed;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,8 +27,7 @@ public class PlayerMovement : MonoBehaviour
         float verticalMovement = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
 
-        Debug.Log(movement.ToString());
-
+        animator.SetFloat("Speed", movement.magnitude);        
         //Blickrichtung vom Spieler anpassen
         if(movement != Vector3.zero){
             transform.rotation = Quaternion.LookRotation(movement);
