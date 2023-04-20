@@ -31,4 +31,5 @@ public class MonsterSpawner : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction);
         newSlime.transform.rotation = rotation;
     }
+
 }
