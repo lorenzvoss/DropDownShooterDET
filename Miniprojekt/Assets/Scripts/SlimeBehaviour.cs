@@ -29,5 +29,9 @@ public class SlimeBehaviour : MonoBehaviour
     public void moveTowardPlayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+        Vector3 direction = player.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
     }
 }
