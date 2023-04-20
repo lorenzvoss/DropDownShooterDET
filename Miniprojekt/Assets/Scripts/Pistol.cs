@@ -18,7 +18,7 @@ public class Pistol : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
             Vector3 vector = raycastHit.point;
-            vector.y = 1.4f;
+            //vector.y = 1.4f;
             //Debug.Log(vector);
             transform.LookAt(vector);
             //transform.position = vector;
