@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public PlayerMovement Player;
+    public Player Player;
     /// <summary>
     /// Abstand Kamera zum Spieler
     /// </summary>

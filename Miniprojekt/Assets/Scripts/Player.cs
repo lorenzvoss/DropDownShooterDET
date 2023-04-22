@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     //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
     public float speed;
+    public float health = 100;
     public GameObject bullet;
     public GameObject pistol;
 
