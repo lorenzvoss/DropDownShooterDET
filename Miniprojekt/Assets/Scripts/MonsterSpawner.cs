@@ -7,6 +7,7 @@ public class MonsterSpawner : MonoBehaviour
 {
     public GameObject slime;
     public GameObject turtle;
+    public GameObject player;
     public float spawnRate;
     public int maxSpawnCount;
     public float spawnRadius;
@@ -26,7 +27,7 @@ public class MonsterSpawner : MonoBehaviour
 
     public void spawnSlime()
     {
-        GameObject newSlime = Instantiate(slime, transform.position + new Vector3(rnd.Next(-10,10), 0, rnd.Next(-10,10)), Quaternion.identity);
+        GameObject newSlime = Instantiate(slime, player.transform.position + new Vector3(rnd.Next(-10,10), 0, rnd.Next(-10,10)), Quaternion.identity);
         Vector3 direction = transform.position - newSlime.transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         newSlime.transform.rotation = rotation;
