@@ -5,6 +5,10 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public PlayerMovement Player;
+    /// <summary>
+    /// Abstand Kamera zum Spieler
+    /// </summary>
+    private Vector3 offsetMovement = new Vector3(0, 5, -2.36f);
 
     // Start is called before the first frame update
     void Start()
@@ -18,14 +22,15 @@ public class CameraMovement : MonoBehaviour
         Movement();
     }
 
+    /// <summary>
+    /// Ahmt die Bewegungen mit einem Abstand von <see cref="offsetMovement"/> des Spielers nach
+    /// </summary>
     void Movement()
     {
         //Bewegungsvektor berechnen
-        float horizontalMovement = Input.GetAxis("Horizontal");
-        float verticalMovement = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+        Vector3 movement = Player.transform.position + offsetMovement;
 
         //Kameraposition anpassen
-        transform.Translate(movement * Player.speed * Time.deltaTime, Space.World);
+        transform.position = movement;
     }
 }
