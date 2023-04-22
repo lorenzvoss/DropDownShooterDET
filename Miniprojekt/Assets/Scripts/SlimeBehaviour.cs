@@ -34,4 +34,14 @@ public class SlimeBehaviour : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            // Schaden anrichten und Bullet zerstören
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
+    }
 }
