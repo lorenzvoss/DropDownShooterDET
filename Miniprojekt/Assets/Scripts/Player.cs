@@ -50,4 +50,13 @@ public class Player : MonoBehaviour
             Instantiate(bullet, pistol.transform.position, pistol.transform.rotation);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Slime")
+        {
+            float damage = collision.collider.GetComponent<SlimeBehaviour>().damage;
+            health -= damage;
+        }
+    }
 }

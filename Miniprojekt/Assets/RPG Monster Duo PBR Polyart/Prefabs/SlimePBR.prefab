@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 5896012482694218972}
   m_Layer: 0
   m_Name: SlimePBR
-  m_TagString: Untagged
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speed: 1
-  damage: 0
+  damage: 5
   health: 0
 --- !u!65 &6608080409712156337
 BoxCollider:
