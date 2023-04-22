@@ -19,8 +19,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        Shoot();
+        if (health > 0.1)
+        {
+            Movement();
+            Shoot();
+        }
     }
 
 
@@ -57,6 +60,7 @@ public class Player : MonoBehaviour
         {
             float damage = collision.collider.GetComponent<SlimeBehaviour>().damage;
             health -= damage;
+            animator.SetFloat("PlayerHealth", health);
         }
     }
 }
