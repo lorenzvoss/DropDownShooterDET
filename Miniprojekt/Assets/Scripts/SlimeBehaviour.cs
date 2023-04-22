@@ -39,9 +39,13 @@ public class SlimeBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            // Schaden anrichten und Bullet zerstören
             Destroy(gameObject);
             Destroy(other.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.kills += 1;
     }
 }
