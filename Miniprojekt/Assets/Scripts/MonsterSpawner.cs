@@ -1,36 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class MonsterSpawner : MonoBehaviour
 {
     public GameObject slime;
     public GameObject turtle;
     public GameObject player;
-    public float spawnRate;
+    public float spawnDelay;
     public int maxSpawnCount;
-    public float spawnRadius;
+    public float minSpawnDistance;
 
-    private System.Random rnd = new System.Random();
-    private int spawnCount;
+    public int spawnCount;
+    private bool isSpawning;
+
+   
+    void Start()
+    {
+        InvokeRepeating("spawnSlime", 0f, spawnDelay);
+        isSpawning  = true;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(rnd.Next(0,100)==1 && spawnCount <= maxSpawnCount)
+        if(spawnCount >= maxSpawnCount)
         {
-            spawnSlime();
-            spawnCount++;
+            CancelInvoke("spawnSlime");
+            isSpawning = false;
+        }
+        if(!isSpawning && spawnCount < maxSpawnCount)
+        {
+            InvokeRepeating("spawnSlime", 0f, spawnDelay);
+            isSpawning = true;
         }
     }
 
     public void spawnSlime()
     {
-        GameObject newSlime = Instantiate(slime, player.transform.position + new Vector3(rnd.Next(-10,10), 0, rnd.Next(-10,10)), Quaternion.identity);
-        Vector3 direction = transform.position - newSlime.transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        newSlime.transform.rotation = rotation;
+        Instantiate(slime, generateRandomSpawnpoint(), Quaternion.identity);
+        spawnCount++;
+    }
+
+
+    public Vector3 generateRandomSpawnpoint()
+    {
+        GameObject ground = GameObject.Find("Ground");
+        Collider groundCollider = ground.GetComponent<Collider>();
+
+        Vector3 spawnpoint;
+
+        do
+        {
+            spawnpoint = new Vector3(Random.Range(groundCollider.bounds.min.x, groundCollider.bounds.max.x), 
+                                    0f, Random.Range(groundCollider.bounds.min.z, groundCollider.bounds.max.z));
+        }
+        while(Vector3.Distance(spawnpoint, player.transform.position) < minSpawnDistance);
+
+        return spawnpoint;
     }
 
 }
