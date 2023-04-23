@@ -7,17 +7,19 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject slime;
     public GameObject turtle;
     public GameObject player;
-    public float spawnDelay;
+    public float spawnDelaySlime;
+    public float spawnDelayTurtle;
     public int maxSpawnCount;
     public float minSpawnDistance;
-
     public int spawnCount;
+
     private bool isSpawning;
 
    
     void Start()
     {
-        InvokeRepeating("spawnSlime", 3f, spawnDelay);
+        InvokeRepeating("spawnSlime", 2f, spawnDelaySlime);
+        InvokeRepeating("spawnTurtle", 4f, spawnDelayTurtle);
         isSpawning  = true;
     }
 
@@ -27,11 +29,13 @@ public class MonsterSpawner : MonoBehaviour
         if(spawnCount >= maxSpawnCount)
         {
             CancelInvoke("spawnSlime");
+            CancelInvoke("spawnTurtle");
             isSpawning = false;
         }
         if(!isSpawning && spawnCount < maxSpawnCount)
         {
-            InvokeRepeating("spawnSlime", 0f, spawnDelay);
+            InvokeRepeating("spawnSlime", 2f, spawnDelaySlime);
+            InvokeRepeating("spawnTurtle", 4f, spawnDelayTurtle);
             isSpawning = true;
         }
     }
@@ -42,6 +46,11 @@ public class MonsterSpawner : MonoBehaviour
         spawnCount++;
     }
 
+    public void spawnTurtle()
+    {
+        Instantiate(turtle, generateRandomSpawnpoint(), Quaternion.identity);
+        spawnCount++;
+    }
 
     public Vector3 generateRandomSpawnpoint()
     {

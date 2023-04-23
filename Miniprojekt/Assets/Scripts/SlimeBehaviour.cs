@@ -22,15 +22,11 @@ public class SlimeBehaviour : MonoBehaviour
         moveTowardPlayer();
     }
 
-    public void CalculateRotation()
-    {
-
-    }
-
     public void moveTowardPlayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
+        //Calculate and assign the correct rotation to face the player
         Vector3 direction = player.transform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;

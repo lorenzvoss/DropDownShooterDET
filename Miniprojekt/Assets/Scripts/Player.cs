@@ -62,5 +62,11 @@ public class Player : MonoBehaviour
             health -= damage;
             animator.SetFloat("PlayerHealth", health);
         }
+        if (collision.collider.tag == "Turtle")
+        {
+            float damage = collision.collider.GetComponent<TurtleBehaviour>().damage;
+            health -= damage;
+            animator.SetFloat("PlayerHealth", health);
+        }
     }
 }

@@ -9,6 +9,7 @@ public class TurtleBehaviour : MonoBehaviour
     public float damage;
     public float health;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +22,32 @@ public class TurtleBehaviour : MonoBehaviour
         moveTowardPlayer();
     }
 
-    public void CalculateRotation()
-    {
-
-    }
-
     public void moveTowardPlayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+        //Calculate and assign the correct rotation to face the player
+        Vector3 direction = player.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        MonsterSpawner monsterSpawner = GameObject.Find("GameManager").GetComponent<MonsterSpawner>();
+
+        if (other.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+            monsterSpawner.spawnCount = monsterSpawner.spawnCount - 1;
+            
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.kills += 1;
     }
 }
+
