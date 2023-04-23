@@ -9,6 +9,7 @@ public class SlimeBehaviour : MonoBehaviour
     public float damage;
     public float health;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +38,14 @@ public class SlimeBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        MonsterSpawner monsterSpawner = GameObject.Find("GameManager").GetComponent<MonsterSpawner>();
+
         if (other.CompareTag("Bullet"))
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
+            monsterSpawner.spawnCount = monsterSpawner.spawnCount - 1;
+            
         }
     }
 

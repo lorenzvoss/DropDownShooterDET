@@ -17,7 +17,7 @@ public class MonsterSpawner : MonoBehaviour
    
     void Start()
     {
-        InvokeRepeating("spawnSlime", 0f, spawnDelay);
+        InvokeRepeating("spawnSlime", 3f, spawnDelay);
         isSpawning  = true;
     }
 
