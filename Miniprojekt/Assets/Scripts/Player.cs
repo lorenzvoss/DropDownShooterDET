@@ -68,5 +68,10 @@ public class Player : MonoBehaviour
             health -= damage;
             animator.SetFloat("PlayerHealth", health);
         }
+        if(collision.collider.tag == "Health"){
+            Debug.Log("HEilung");
+            health += 10;
+            Destroy(collision.gameObject);
+        }
     }
 }

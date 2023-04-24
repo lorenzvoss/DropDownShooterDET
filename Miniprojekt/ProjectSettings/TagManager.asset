@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Slime
   - Bullet
+  - Turtle
+  - Health
   layers:
   - Default
   - TransparentFX
