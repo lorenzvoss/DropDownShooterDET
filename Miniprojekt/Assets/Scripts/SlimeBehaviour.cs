@@ -10,10 +10,13 @@ public class SlimeBehaviour : MonoBehaviour
     public float health;
     public GameObject healingObject;
 
+    private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = GameObject.Find("Player");
     }
 
@@ -62,4 +65,5 @@ public class SlimeBehaviour : MonoBehaviour
     {
         GameManager.Instance.kills += 1;
     }
+
 }
