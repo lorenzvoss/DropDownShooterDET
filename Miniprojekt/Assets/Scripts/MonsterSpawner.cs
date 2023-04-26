@@ -18,6 +18,7 @@ public class MonsterSpawner : MonoBehaviour
     void Start()
     {
         maxSpawnCount =  5;
+        spawnCount = 0;
         InvokeRepeating("spawnSlime", 2f, spawnDelaySlime);
         InvokeRepeating("spawnTurtle", 4f, spawnDelayTurtle);
         isSpawning  = true;

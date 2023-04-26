@@ -24,6 +24,8 @@ public class SlimeBehaviour : MonoBehaviour
         if(transform.position.y < -10)
         {
             Destroy(this.gameObject);
+            MonsterSpawner monsterSpawner = GameObject.Find("GameManager").GetComponent<MonsterSpawner>();
+            monsterSpawner.spawnCount -= 1;
         }
     }
 
