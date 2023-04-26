@@ -79,7 +79,10 @@ public class Player : MonoBehaviour
     {
         if(other.CompareTag("Health"))
         {
-            health += 10;
+            if (health < 100)
+            {
+                health += 10;
+            }
             Destroy(other.gameObject);
         }
     }
