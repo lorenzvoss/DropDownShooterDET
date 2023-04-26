@@ -61,8 +61,8 @@ public class MonsterSpawner : MonoBehaviour
 
         do
         {
-            spawnpoint = new Vector3(Random.Range(groundCollider.bounds.min.x, groundCollider.bounds.max.x), 
-                                    0f, Random.Range(groundCollider.bounds.min.z, groundCollider.bounds.max.z));
+            spawnpoint = new Vector3(Random.Range(groundCollider.bounds.min.x + 1, groundCollider.bounds.max.x -  1), 
+                                    0f, Random.Range(groundCollider.bounds.min.z  +  1 , groundCollider.bounds.max.z  - 1));
         }
         while(Vector3.Distance(spawnpoint, player.transform.position) < minSpawnDistance);
 

@@ -8,6 +8,7 @@ public class SlimeBehaviour : MonoBehaviour
     public float speed;
     public float damage;
     public float health;
+    public GameObject healingObject;
 
 
     // Start is called before the first frame update
@@ -42,7 +43,13 @@ public class SlimeBehaviour : MonoBehaviour
             Destroy(other.gameObject);
             monsterSpawner.spawnCount = monsterSpawner.spawnCount - 1;
             
+            if(Random.value <= 0.1f)
+            {
+                Instantiate(healingObject, transform.position, Quaternion.identity);
+            }
         }
+
+        
     }
 
     private void OnDestroy()

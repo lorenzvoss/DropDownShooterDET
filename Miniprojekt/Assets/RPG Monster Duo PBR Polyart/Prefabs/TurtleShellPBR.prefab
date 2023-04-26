@@ -866,6 +866,7 @@ MonoBehaviour:
   speed: 0.5
   damage: 10
   health: 0
+  healingObject: {fileID: 3109860492235197658, guid: cfac55923a7674244941eb65a6f71a1a, type: 3}
 --- !u!65 &3149425155023167584
 BoxCollider:
   m_ObjectHideFlags: 0

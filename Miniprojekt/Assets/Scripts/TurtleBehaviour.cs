@@ -8,6 +8,7 @@ public class TurtleBehaviour : MonoBehaviour
     public float speed;
     public float damage;
     public float health;
+    public GameObject healingObject;
 
 
     // Start is called before the first frame update
@@ -41,9 +42,15 @@ public class TurtleBehaviour : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
             monsterSpawner.spawnCount = monsterSpawner.spawnCount - 1;
-            
+            if(Random.value <= 0.1f)
+            {
+                Instantiate(healingObject, transform.position, Quaternion.identity);
+            }
         }
+        
+        
     }
+
 
     private void OnDestroy()
     {
