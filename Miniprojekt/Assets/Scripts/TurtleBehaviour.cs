@@ -21,6 +21,10 @@ public class TurtleBehaviour : MonoBehaviour
     void Update()
     {
         moveTowardPlayer();
+        if(transform.position.y < -10)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void moveTowardPlayer()

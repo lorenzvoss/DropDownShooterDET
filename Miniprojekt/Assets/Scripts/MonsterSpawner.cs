@@ -9,15 +9,15 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject player;
     public float spawnDelaySlime;
     public float spawnDelayTurtle;
-    public int maxSpawnCount;
     public float minSpawnDistance;
     public int spawnCount;
 
     private bool isSpawning;
-
+    private int maxSpawnCount;
    
     void Start()
     {
+        maxSpawnCount =  5;
         InvokeRepeating("spawnSlime", 2f, spawnDelaySlime);
         InvokeRepeating("spawnTurtle", 4f, spawnDelayTurtle);
         isSpawning  = true;
@@ -32,8 +32,9 @@ public class MonsterSpawner : MonoBehaviour
             CancelInvoke("spawnTurtle");
             isSpawning = false;
         }
-        if(!isSpawning && spawnCount < maxSpawnCount)
-        {
+        if(!isSpawning && spawnCount == 0)
+        {   
+            maxSpawnCount += 3;
             InvokeRepeating("spawnSlime", 2f, spawnDelaySlime);
             InvokeRepeating("spawnTurtle", 4f, spawnDelayTurtle);
             isSpawning = true;
