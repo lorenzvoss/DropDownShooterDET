@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class Player : MonoBehaviour
         {
             Movement();
             Shoot();
+        }
+        else
+        {
+            SceneManager.LoadScene("DeathScene");
         }
     }
 
