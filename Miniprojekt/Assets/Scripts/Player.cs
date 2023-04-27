@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x,  0  ,  transform.position.z);
         if (health > 0.1)
         {
             Movement();

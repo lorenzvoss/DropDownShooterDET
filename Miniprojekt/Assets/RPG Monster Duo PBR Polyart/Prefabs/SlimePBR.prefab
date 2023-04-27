@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 1
+  speed: 1.5
   damage: 5
   health: 0
   healingObject: {fileID: 3109860492235197658, guid: cfac55923a7674244941eb65a6f71a1a, type: 3}

@@ -52,7 +52,7 @@ public class SlimeBehaviour : MonoBehaviour
             Destroy(other.gameObject);
             monsterSpawner.spawnCount = monsterSpawner.spawnCount - 1;
             
-            if(Random.value <= 0.1f)
+            if(Random.value <= 0.05f)
             {
                 Instantiate(healingObject, transform.position, Quaternion.identity);
             }
